@@ -1,0 +1,6 @@
+{
+	"$schema": "manifest.schema.json",
+	"name": "AchievementAmount",
+	"main": "AchievementAmount.dll",
+	"lifecycle": "project"
+}
