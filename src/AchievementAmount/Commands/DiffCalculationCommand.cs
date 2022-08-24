@@ -31,22 +31,22 @@ namespace AchievementAmount.Commands
             }
 
             // 現在のモデル以下の差分情報を集計します
-            var ammount = 0;
+            var amount = 0;
             var model = c.App.Workspace.CurrentModel;
 
             IMatch match = comparison.GetMatch(model);
-            if (match.HasDifference) ammount++;
+            if (match.HasDifference) amount++;
 
             var children = model.GetAllChildren();
             foreach (IModel child in children)
             {
                 match = comparison.GetMatch(child);
-                if (match.HasDifference) ammount++;
+                if (match.HasDifference) amount++;
             }
 
             // 集計結果の表示
             c.App.Output.Clear(ExtensionName);
-            c.App.Output.WriteLine(ExtensionName, $"差分モデル数={ammount}");
+            c.App.Output.WriteLine(ExtensionName, $"差分モデル数={amount}");
             c.App.Window.IsInformationPaneVisible = true; // 情報ペインを表示します
             c.App.Window.ActiveInfoWindow = "Output"; // 出力タブをアクティブにします
             c.App.Window.CurrentOutputCategory = ExtensionName; // カテゴリを選択します

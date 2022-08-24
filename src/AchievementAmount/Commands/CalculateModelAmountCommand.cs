@@ -17,19 +17,12 @@ namespace AchievementAmount.Commands
         protected override void OnExecute(ICommandContext c, ICommandParams p)
         {
             // 現在のモデル以下のモデル数を集計します
-            var ammount = 0;
             var model = c.App.Workspace.CurrentModel;
-            ammount++;
-
-            var children = model.GetAllChildren();
-            foreach (IModel child in children)
-            {
-                ammount++;
-            }
+            var amount = model.GetAllChildren().Count + 1;
 
             // 集計結果の表示
             c.App.Output.Clear(ExtensionName);
-            c.App.Output.WriteLine(ExtensionName, $"モデル数={ammount}");
+            c.App.Output.WriteLine(ExtensionName, $"モデル数={amount}");
             c.App.Window.IsInformationPaneVisible = true; // 情報ペインを表示します
             c.App.Window.ActiveInfoWindow = "Output"; // 出力タブをアクティブにします
             c.App.Window.CurrentOutputCategory = ExtensionName; // カテゴリを選択します
